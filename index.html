@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Covid-19 Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <section id="form-section">
+      <fieldset>
+        <form action="" id="add-data">
+          <ul>
+            <div>
+              <li class="input-list">
+                <label class="data-lab" for="f-name">First Name:</label>
+                <input type="text" id="f-name" required />
+              </li>
+            </div>
+
+            <div>
+              <li class="input-list">
+                <label class="data-lab" for="l-name">Last Name:</label>
+                <input type="text" id="l-name" required />
+              </li>
+            </div>
+            <div>
+              <li class="input-list">
+                <label class="data-lab" for="email">Email Address:</label>
+                <input type="email" id="email" required />
+              </li>
+            </div>
+
+            <div>
+              <li>
+                <label class="data-lab" for="gender">Gender:</label>
+                <select name="gender" id="gender">
+                  <option value="default" selected disable>
+                    Choose from the list
+                  </option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </li>
+            </div>
+            <div>
+              <li class="check-list">
+                <input type="checkbox" id="in-nigeria" />
+                <label for="in-nigeria"
+                  >Recently came in to Nigeria within the last 14 days</label
+                >
+              </li>
+            </div>
+          </ul>
+          <input type="submit" value="submit" name="submit" />
+        </form>
+      </fieldset>
+    </section>
+    <section id="table-section">
+      <table id="output">
+        <tr>
+          <th>Name</th>
+          <th>Email Address</th>
+          <th>Gender</th>
+          <th>Came to Nigeria within the last 14 days?</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
