@@ -4,14 +4,18 @@ body {
   background-color: #ddd;
 }
 
-#form-section {
+.form-section {
   width: 100%;
   max-width: 800px;
   margin: 20px auto;
 }
 
-#form-section li {
+.form-section li {
   list-style-type: none;
+}
+
+#form-update-section {
+  display: none;
 }
 
 ul {
@@ -19,7 +23,7 @@ ul {
   padding: 0px;
 }
 
-#form-section div {
+.form-section div {
   margin: 5px 5px;
   padding: 3px;
   float: none;
@@ -31,18 +35,23 @@ label.data-lab {
 }
 
 li.input-list input,
-#gender {
+.gender {
   width: 400px;
   /* display: inline-block; */
   font-size: 20px;
   font-weight: 400;
 }
 
-#gender {
+.gender {
   width: 250px;
+  color: black;
 }
 
-#in-nigeria {
+.gender option:first-child {
+  color: lightgray;
+}
+
+.in-nigeria {
   height: 25px;
   width: 25px;
   margin-right: 10px;
@@ -54,7 +63,7 @@ li.input-list input,
   font-size: 20px;
 }
 
-#form-section input[type="submit"] {
+.form-section input[type="submit"] {
   font-size: 110%;
   margin: 10px;
   margin-left: 20%;
