@@ -31,8 +31,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             inNigeria_14 = 'No';
         };
 
-        
-
+    
         //Creating element
         const tr = document.createElement('tr');
         const td_1 = document.createElement('td');
@@ -52,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
         //adding class to buttons
         editBtn.className = 'edit';
         deleteBtn.className = 'delete'
-
 
         //Adding content
         td_1.textContent = fName + " " + lName;
@@ -78,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
         formBody.reset();
     });
 
-
     //Editing row.
     const editRow = document.querySelector('#output');
     editRow.addEventListener('click', function (e) {
@@ -100,8 +97,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
             hideAddTable.style.display = 'none';
             showEditTable.style.display = 'block';
 
-
-
             //Get content from table for update
             const trContent = e.target.parentElement.parentElement;
             nameEdit = Array.from(trContent.children)[0].textContent;
@@ -109,8 +104,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             newName.value = nameEdit;
             newEmail.value = emailEdit;
-
-
 
             //Update form content
             const updateForm = document.forms['update-data'];
@@ -144,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 Array.from(trContent.children)[2].textContent = genderVal;
                 Array.from(trContent.children)[3].textContent = inNigeria_14;
                 
-
                 // Show the data appending form
                 hideAddTable.style.display = 'block';
                 showEditTable.style.display = 'none'; 
