@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             inNigeria_14 = 'No';
         };
 
-    
+
         //Creating element
         const tr = document.createElement('tr');
         const td_1 = document.createElement('td');
@@ -85,11 +85,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
         //if statement is required to prevent the delete operation
         //from triggering the edit function.
         if (e.target.className != 'delete') {
-                // Declaring variables
+            // Declaring variables
             const showEditTable = document.querySelector('#form-update-section');
             const hideAddTable = document.querySelector('#form-section');
-            const newName = document.querySelector('#name');
+            const newFirstName = document.querySelector('#fname');
+            const newLastName = document.querySelector('#lname');
             const newEmail = document.querySelector('#emailUpdate');
+            const newGender = document.querySelector('#genderUpdate');
+            let newLocation = document.querySelector('#in-nigeria-update')
+            let inNga = '';
             let genderVal = '';
             let inNigeria_14 = '';
 
@@ -97,13 +101,40 @@ document.addEventListener('DOMContentLoaded', function (e) {
             hideAddTable.style.display = 'none';
             showEditTable.style.display = 'block';
 
+
             //Get content from table for update
             const trContent = e.target.parentElement.parentElement;
-            nameEdit = Array.from(trContent.children)[0].textContent;
-            emailEdit = Array.from(trContent.children)[1].textContent;
 
-            newName.value = nameEdit;
-            newEmail.value = emailEdit;
+            //Getting names and splitting them.
+            fullName = (Array.from(trContent.children)[0].textContent);
+            nameSplit = fullName.split(' ');
+
+            //Get content from table for update
+            const gender = Array.from(trContent.children)[2].textContent;
+            const inCountry = Array.from(trContent.children)[3].textContent;
+
+
+            newFirstName.value = nameSplit[0];
+            newLastName.value = nameSplit[1];
+            newEmail.value = Array.from(trContent.children)[1].textContent;
+
+
+            // for loop to get existing gender input from the user
+            for (let i,
+                    j = 0; i = newGender.options[j]; j++) {
+                if (i.textContent == gender) {
+                    newGender.selectedIndex = j;
+                    break;
+                }
+            };
+
+            //To check the status of the check-box and returrn same to the edit page.
+            if (inCountry == 'Yes') {
+                console.log(inCountry);
+                newLocation.checked = true;
+
+            };
+
 
             //Update form content
             const updateForm = document.forms['update-data'];
@@ -111,12 +142,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
             updateForm.addEventListener('submit', function (ee) {
                 ee.preventDefault();
 
-                const nameUpdate = updateForm.querySelector('#name').value,
-                emailUpdate = updateForm.querySelector('#emailUpdate').value;
+                const fNameUpdate = updateForm.querySelector('#fname').value,
+                    lNameUpdate = updateForm.querySelector('#lname').value,
+                    emailUpdate = updateForm.querySelector('#emailUpdate').value;
 
-                    //Getting input from Select options
+                //Getting input from Select options
                 const genderOpt = updateForm.querySelector('#genderUpdate');
                 const genderVal = genderOpt.options[genderOpt.selectedIndex].textContent;
+
+
                 //Validating Gender selection
                 if (genderOpt.options[genderOpt.selectedIndex].value == 'default') {
                     ee.preventDefault();
@@ -132,19 +166,19 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 };
 
                 // Updating form content
-                Array.from(trContent.children)[0].textContent = nameUpdate;
+                Array.from(trContent.children)[0].textContent = fNameUpdate + " " + lNameUpdate;
                 Array.from(trContent.children)[1].textContent = emailUpdate;
                 Array.from(trContent.children)[2].textContent = genderVal;
                 Array.from(trContent.children)[3].textContent = inNigeria_14;
-                
+
                 // Show the data appending form
                 hideAddTable.style.display = 'block';
-                showEditTable.style.display = 'none'; 
+                showEditTable.style.display = 'none';
             });
         };
     });
 
-     //Deleting an already appended row.
+    //Deleting an already appended row.
     const deleteRow = document.querySelector('#output');
     deleteRow.addEventListener('click', function (e) {
         if (e.target.className == 'delete') {
